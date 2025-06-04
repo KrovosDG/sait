@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Компьютерная техника</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header class="header">
+    <header>
         <h1>Магазин компьютерной техники</h1>
+        <button id="addProductBtn">Добавить товар</button>
     </header>
-    
     <section id="catalog"></section>
 
-    <footer class="footer">
-        © 2025 Компьютерная техника
-    </footer>
+    <!-- Модальное окно для добавления товара -->
+    <div id="modal">
+        <div id="modalContent">
+            <span id="closeModal">&times;</span>
+            <h2>Добавить новый товар</h2>
+            <input type="text" id="productName" placeholder="Название" />
+            <input type="text" id="productPrice" placeholder="Цена" />
+            <input type="text" id="productImage" placeholder="URL изображения" />
+            <button id="saveProduct">Сохранить</button>
+        </div>
+    </div>
 
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
