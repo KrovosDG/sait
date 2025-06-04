@@ -2,17 +2,17 @@ const products = [
     {
         name: 'Ноутбук ASUS',
         price: '75000 руб.',
-        image: 'https://via.placeholder.com/200x150?text=Ноутбук+ASUS'
+        image: 'https://ogo1.ru/upload/resize_cache/iblock/b23/500_500_1/b23dd182da170cfbb2cb0ee691b65941.jpeg'
     },
     {
         name: 'Монитор Dell',
         price: '15000 руб.',
-        image: 'https://via.placeholder.com/200x150?text=Монитор+Dell'
+        image: 'https://avatars.mds.yandex.net/get-mpic/4737085/img_id6820835601639898154.jpeg/orig'
     },
     {
         name: 'Клавиатура Logitech',
         price: '3000 руб.',
-        image: 'https://via.placeholder.com/200x150?text=Клавиатура'
+        image: 'https://cdn1.ozone.ru/s3/multimedia-5/6381875081.jpg'
     }
 ];
 
