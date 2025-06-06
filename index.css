@@ -1,78 +1,206 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-h1 {
+    background-color: #f7f7f7;
     color: #333;
+    line-height: 1.6;
+    transition: background-color 0.5s, color 0.5s;
 }
-#catalog {
+
+header {
+    background-color: #4caf50;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+main {
+    padding: 1em;
+}
+
+section#catalog form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.product {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 15px;
-    width: 200px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-.product img {
-    width: 100%;
-    height: auto;
-}
-.product h3 {
-    margin: 10px 0 5px 0;
-    font-size: 1.1em;
-}
-.product p {
-    margin: 5px 0;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1em;
 }
 
-/* Стиль для кнопки добавления */
-#addProductBtn {
-    margin-top: 20px;
-    padding: 10px 15px;
-    font-size: 1em;
+section#catalog input[type='number'] {
+    width: 80px;
+}
+
+section#catalog button {
+    padding: 0.5em 1em;
+    background-color: #4caf50;
+    color: white;
+    border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-#modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1; 
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4);
+section#catalog button:hover {
+    transform: scale(1.05);
 }
-#modalContent {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    width: 300px;
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1em;
+}
+
+.product-card {
+    background-color: white;
+    padding: 1em;
     border-radius: 5px;
-    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
 }
-#closeModal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    cursor: pointer;
-    font-size: 1.2em;
+
+.product-card:hover {
+    transform: translateY(-5px);
 }
-#modalContent input {
-    width: 100%;
-    padding: 8px;
-    margin: 8px 0;
-    box-sizing: border-box;
+
+.product-image {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
 }
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff5722;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.3em;
+    position: fixed;
+    bottom: 0;
     left: 0;
     right: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+header {
+    background-color: #4caf50;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+main {
+    padding: 1em;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 0.3em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-theme header {
+    background-color: #2ecc71;
+}
+
+.product-card {
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 1em;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.product-card .product-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff5722;
+}
+
+body.dark-theme .product-card {
+    background-color: #444;
+    color: #ddd;
+}
+
+body.dark-theme .product-card h3 {
+    color: #fff;
+}
+
+body.dark-theme .product-card p {
+    color: #aaa;
+}
+
+body.dark-theme .product-card .product-price {
+    color: #ffea00;
+}
+
+#themeToggle {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#themeToggle:hover {
+    opacity: 0.8;
 }
