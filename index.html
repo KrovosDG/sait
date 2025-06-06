@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>Компьютерная техника</title>
-    <link rel="stylesheet" href="index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин компьютерной техники</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <header>
-        <h1>Магазин компьютерной техники</h1>
-        <button id="addProductBtn">Добавить товар</button>
+        <h1>Интернет-магазин компьютерной техники</h1>
+        <button id="themeToggle">Сменить дизайн</button>
     </header>
-    <section id="catalog"></section>
 
-    <div id="modal">
-        <div id="modalContent">
-            <span id="closeModal">&times;</span>
-            <h2>Добавить новый товар</h2>
-            <input type="text" id="productName" placeholder="Название" />
-            <input type="text" id="productPrice" placeholder="Цена" />
-            <input type="text" id="productImage" placeholder="URL изображения" />
-            <button id="saveProduct">Сохранить</button>
-        </div>
-    </div>
+    <main>
+        <section id="catalog">
+            <h2>Ассортимент продукции</h2>
+            <form id="filter-form">
+                <label for="min-price">Минимальная цена:</label>
+                <input type="number" id="min-price" placeholder="Любая">
+                
+                <label for="max-price">Максимальная цена:</label>
+                <input type="number" id="max-price" placeholder="Любая">
+                
+                <button type="submit">Фильтровать</button>
+            </form>
+
+            <div id="products-list"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 Интернет-магазин компьютерной техники</p>
+    </footer>
 
     <script src="index.js"></script>
 </body>
