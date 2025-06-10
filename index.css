@@ -204,3 +204,8 @@ body.dark-theme .product-card .product-price {
 #themeToggle:hover {
     opacity: 0.8;
 }
+
+.click {
+    background-color: lightblue;
+    font-weight: bold;
+}
