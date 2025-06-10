@@ -192,19 +192,23 @@ document.getElementById('clickClassButton').addEventListener('click', function()
 // 1. Найти div с классом "content"
 const contentDiv = document.querySelector('.content');
 
-// 2. Создать новый элемент кнопки
-const button = document.createElement('button');
+if (contentDiv) {
+    // 2. Создать новый элемент кнопки
+    const button = document.createElement('button');
 
-// 3. Добавить текст "Отправить"
-button.textContent = 'Отправить';
+    // 3. Добавить текст "Отправить"
+    button.textContent = 'Отправить';
 
-// 4. Добавить обработчик события для изменения текста после клика
-button.addEventListener('click', () => {
-    button.textContent = 'Текст отправлен';
-});
+    // 4. Добавить обработчик события для изменения текста после клика
+    button.addEventListener('click', () => {
+        button.textContent = 'Текст отправлен';
+    });
 
-// 5. Добавить кнопку внутрь div
-contentDiv.appendChild(button);
+    // 5. Добавить кнопку внутрь div
+    contentDiv.appendChild(button);
+} else {
+    console.error('Элемент с классом "content" не найден!');
+}
 
 // 1. Вывод сообщения, когда все теги DOM загружены
 document.addEventListener('DOMContentLoaded', () => {
