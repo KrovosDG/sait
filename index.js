@@ -90,15 +90,161 @@ function filterProducts() {
 
 renderProducts(products);
 
-filterForm.addEventListener('submit', e => {
-    e.preventDefault(); 
-    filterProducts(); 
+// Найти кнопку смены дизайна
+const themeToggleButton = document.getElementById('themeToggle');
+
+// Флаг для определения текущего режима
+let darkMode = false;
+
+// Обработчик события клика по кнопке смены дизайна
+themeToggleButton.addEventListener('click', () => {
+    darkMode = !darkMode; // Переключаем режим
+
+    if (darkMode) {
+        document.body.style.backgroundColor = '#222';
+        document.body.style.color = '#fff';
+    } else {
+        document.body.style.backgroundColor = '#fff';
+        document.body.style.color = '#000';
+    }
 });
 
-const themeToggleButton = document.getElementById("themeToggle");
+// 1. Получаем кнопку из HTML
+const myButton = document.getElementById("myButton");
 
-themeToggleButton.addEventListener("click", () => {
-    document.body.classList.toggle("dark-theme"); 
+// 2. Выводим сообщение о загрузке страницы
+console.log("страница загрузилась");
+
+// 3. Добавляем обработчик onclick
+myButton.onclick = function() {
+    console.log("событие onclick");
+};
+
+// 4. Добавляем обработчик addEventListener
+myButton.addEventListener("click", function() {
+    console.log("событие addEventListener");
 });
 
-renderCatalog();
+// Обработчик клика для кнопок 1, 2, 3 (вывод в консоль)
+document.querySelectorAll('.number-button').forEach(button => {
+    button.addEventListener('click', () => {
+        console.log(`Нажата кнопка: ${button.textContent}`);
+    });
+});
+
+// Кнопка 4: счетчик нажатий
+let clickCount = 0;
+document.getElementById('countButton').addEventListener('click', () => {
+    clickCount++;
+    console.log(`Кнопка "4" была нажата ${clickCount} раз(а)`);
+});
+
+// Кнопка 5: изменение текста после клика
+document.getElementById('textChangeButton').addEventListener('click', function() {
+    this.textContent = 'Вы нажали на эту кнопку';
+});
+
+// 1. Кнопка для добавления заголовка
+document.getElementById('addTitleButton').addEventListener('click', () => {
+    const title = document.createElement('h1');
+    title.textContent = 'Новый заголовок';
+    title.id = 'dynamicTitle';
+    document.getElementById('buttons').appendChild(title);
+});
+
+// 2. Кнопка для удаления заголовка
+document.getElementById('removeTitleButton').addEventListener('click', () => {
+    const title = document.getElementById('dynamicTitle');
+    if (title) {
+        title.remove();
+    }
+});
+
+// 3. Кнопка, реагирующая на наведение и уход курсора
+const hoverButton = document.getElementById('hoverButton');
+hoverButton.addEventListener('mouseover', () => {
+    console.log('Вы навели на данную кнопку');
+});
+hoverButton.addEventListener('mouseout', () => {
+    console.log('Наведение на кнопку больше нет');
+});
+
+// 1. Кнопка для добавления нового элемента списка
+document.getElementById('addItemButton').addEventListener('click', () => {
+    const newItem = document.createElement('li');
+    newItem.textContent = 'Новый элемент списка';
+    document.getElementById('itemList').appendChild(newItem);
+});
+
+// 2. Кнопка для удаления первого элемента списка
+document.getElementById('removeFirstItemButton').addEventListener('click', () => {
+    const itemList = document.getElementById('itemList');
+    if (itemList.firstElementChild) {
+        itemList.firstElementChild.remove();
+    }
+});
+
+// 3. Кнопка, которая получает класс "click" при клике
+document.getElementById('clickClassButton').addEventListener('click', function() {
+    this.classList.add('click');
+});
+
+// 1. Найти div с классом "content"
+const contentDiv = document.querySelector('.content');
+
+// 2. Создать новый элемент кнопки
+const button = document.createElement('button');
+
+// 3. Добавить текст "Отправить"
+button.textContent = 'Отправить';
+
+// 4. Добавить обработчик события для изменения текста после клика
+button.addEventListener('click', () => {
+    button.textContent = 'Текст отправлен';
+});
+
+// 5. Добавить кнопку внутрь div
+contentDiv.appendChild(button);
+
+// 1. Вывод сообщения, когда все теги DOM загружены
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Все теги прогрузились');
+});
+
+// 2. Вывод сообщения, когда все ресурсы страницы загружены
+window.addEventListener('load', () => {
+    console.log('Страница загрузилась');
+});
+
+// 3. Делегирование: Определение наличия класса "super_element" и вывод тега
+document.body.addEventListener('click', (event) => {
+    const element = event.target;
+    const tagName = element.tagName.toLowerCase();
+    if (element.classList.contains('super_element')) {
+        console.log(`Класс "super_element" присутствует в элементе "${tagName}".`);
+    } else {
+        console.log(`Класс "super_element" отсутствует в элементе "${tagName}".`);
+    }
+});
+
+// 4. Сообщение при наведении на textarea
+document.addEventListener('mouseover', (event) => {
+    if (event.target.tagName.toLowerCase() === 'textarea') {
+        console.log('Вы навели на textarea.');
+    }
+});
+
+// 5. Делегирование: Вывод текста кнопки при клике внутри ul
+document.querySelector('ul').addEventListener('click', (event) => {
+    if (event.target.tagName.toLowerCase() === 'button') {
+        console.log(event.target.textContent);
+    }
+});
+
+// 6. Ответ на вопрос:
+console.log('Когда клик происходит внутри ul, сначала срабатывает обработчик клика на кнопке внутри ul, затем всплытие событий достигает обработчика клика на всем документе, определяющего наличие класса "super_element". Из-за этого сообщение из 5-го задания появляется первым, затем 3-е задание.')
+
+// 7. Изменение цвета заднего фона каждого второго li
+document.querySelectorAll('li:nth-child(even)').forEach(li => {
+    li.style.backgroundColor = 'lightgray';
+});
