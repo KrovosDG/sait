@@ -252,3 +252,108 @@ console.log('Когда клик происходит внутри ul, снач�
 document.querySelectorAll('li:nth-child(even)').forEach(li => {
     li.style.backgroundColor = 'lightgray';
 });
+// Проверка согласия с условиями
+document.getElementById('submit-agreement').addEventListener('click', function() {
+    const checkbox = document.getElementById('agree-checkbox');
+    const errorElement = document.getElementById('agreement-error');
+    
+    if (!checkbox.checked) {
+        errorElement.textContent = 'Необходимо согласиться с условиями';
+    } else {
+        errorElement.textContent = '';
+        // Здесь можно добавить код для отправки формы
+        console.log('Форма отправлена');
+    }
+});
+
+// Убираем сообщение об ошибке при изменении чекбокса
+document.getElementById('agree-checkbox').addEventListener('change', function() {
+    if (this.checked) {
+        document.getElementById('agreement-error').textContent = '';
+    }
+});
+
+// Обработчик для кнопки отправки напитка
+document.getElementById('submit-drink').addEventListener('click', () => {
+    const selectedDrink = document.querySelector('input[name="drink"]:checked');
+    
+    if (!selectedDrink) {
+        console.log('Пожалуйста, выберите напиток');
+        return;
+    }
+    
+    if (selectedDrink.value === 'tea') {
+        console.log('Чай закончился');
+    } else if (selectedDrink.value === 'coffee') {
+        console.log('Кофе закончился');
+    }
+});
+
+// Проверка пароля
+document.getElementById('check-password').addEventListener('click', () => {
+    const passwordInput = document.getElementById('password-input');
+    const messageElement = document.getElementById('password-message');
+    
+    // Удаляем предыдущие классы
+    passwordInput.classList.remove('correct', 'incorrect');
+    messageElement.textContent = '';
+    
+    if (passwordInput.value.toLowerCase() === 'пароль') {
+        passwordInput.classList.add('correct');
+    } else {
+        passwordInput.classList.add('incorrect');
+        messageElement.textContent = 'Пароль неверный';
+    }
+});
+document.getElementById('password-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        document.getElementById('check-password').click();
+    }
+});
+// Динамическое изменение заголовка
+document.getElementById('title-input').addEventListener('input', function() {
+    const heading = document.getElementById('dynamic-heading');
+    heading.textContent = this.value || 'Заголовок'; // Если поле пустое, вернется "Заголовок"
+});
+// Часть 1: Отображение значения input в span
+document.getElementById('from').addEventListener('input', function() {
+    document.getElementById('output').textContent = this.value;
+});
+
+// Часть 2: Анимация по клику
+document.querySelector('.messageBtn').addEventListener('click', function() {
+    const message = document.querySelector('.message');
+    message.classList.add('animate_animated', 'animate_fadeInLeftBig');
+    message.style.visibility = 'visible';
+});
+
+// Часть 3: Валидация формы
+const form = document.getElementById('validationForm');
+const inputs = form.querySelectorAll('input');
+
+// Проверка при отправке формы
+form.addEventListener('submit', function(e) {
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            input.classList.add('error');
+            isValid = false;
+        }
+    });
+    
+    if (!isValid) {
+        e.preventDefault();
+    }
+});
+
+// Проверка при вводе
+inputs.forEach(input => {
+    input.addEventListener('input', function() {
+        if (this.value.trim()) {
+            this.classList.remove('error');
+        } else {
+            this.classList.add('error');
+        }
+    });
+});
