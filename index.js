@@ -112,145 +112,89 @@ themeToggleButton.addEventListener('click', () => {
 // 1. Получаем кнопку из HTML
 const myButton = document.getElementById("myButton");
 
-// 2. Выводим сообщение о загрузке страницы
-console.log("страница загрузилась");
+// Загрузка страницы
+showMessage("Страница загрузилась");
 
-// 3. Добавляем обработчик onclick
+// Обработчики кнопок
 myButton.onclick = function() {
-    console.log("событие onclick");
+    showMessage("Событие onclick");
 };
 
-// 4. Добавляем обработчик addEventListener
 myButton.addEventListener("click", function() {
-    console.log("событие addEventListener");
+    showMessage("Событие addEventListener");
 });
 
-// Обработчик клика для кнопок 1, 2, 3 (вывод в консоль)
+// Кнопки 1, 2, 3
 document.querySelectorAll('.number-button').forEach(button => {
     button.addEventListener('click', () => {
-        console.log(`Нажата кнопка: ${button.textContent}`);
+        showMessage(`Нажата кнопка: ${button.textContent}`);
     });
 });
 
-// Кнопка 4: счетчик нажатий
-let clickCount = 0;
+// Кнопка 4
 document.getElementById('countButton').addEventListener('click', () => {
     clickCount++;
-    console.log(`Кнопка "4" была нажата ${clickCount} раз(а)`);
+    showMessage(`Кнопка "4" была нажата ${clickCount} раз(а)`);
 });
 
-// Кнопка 5: изменение текста после клика
-document.getElementById('textChangeButton').addEventListener('click', function() {
-    this.textContent = 'Вы нажали на эту кнопку';
-});
-
-// 1. Кнопка для добавления заголовка
-document.getElementById('addTitleButton').addEventListener('click', () => {
-    const title = document.createElement('h1');
-    title.textContent = 'Новый заголовок';
-    title.id = 'dynamicTitle';
-    document.getElementById('buttons').appendChild(title);
-});
-
-// 2. Кнопка для удаления заголовка
-document.getElementById('removeTitleButton').addEventListener('click', () => {
-    const title = document.getElementById('dynamicTitle');
-    if (title) {
-        title.remove();
-    }
-});
-
-// 3. Кнопка, реагирующая на наведение и уход курсора
-const hoverButton = document.getElementById('hoverButton');
+// Наведение на кнопку
 hoverButton.addEventListener('mouseover', () => {
-    console.log('Вы навели на данную кнопку');
+    showMessage('Вы навели на данную кнопку');
 });
 hoverButton.addEventListener('mouseout', () => {
-    console.log('Наведение на кнопку больше нет');
+    showMessage('Наведение на кнопку больше нет');
 });
 
-// 1. Кнопка для добавления нового элемента списка
-document.getElementById('addItemButton').addEventListener('click', () => {
-    const newItem = document.createElement('li');
-    newItem.textContent = 'Новый элемент списка';
-    document.getElementById('itemList').appendChild(newItem);
-});
-
-// 2. Кнопка для удаления первого элемента списка
-document.getElementById('removeFirstItemButton').addEventListener('click', () => {
-    const itemList = document.getElementById('itemList');
-    if (itemList.firstElementChild) {
-        itemList.firstElementChild.remove();
-    }
-});
-
-// 3. Кнопка, которая получает класс "click" при клике
-document.getElementById('clickClassButton').addEventListener('click', function() {
-    this.classList.add('click');
-});
-
-// 1. Найти div с классом "content"
-const contentDiv = document.querySelector('.content');
-
-if (contentDiv) {
-    // 2. Создать новый элемент кнопки
-    const button = document.createElement('button');
-
-    // 3. Добавить текст "Отправить"
-    button.textContent = 'Отправить';
-
-    // 4. Добавить обработчик события для изменения текста после клика
-    button.addEventListener('click', () => {
-        button.textContent = 'Текст отправлен';
-    });
-
-    // 5. Добавить кнопку внутрь div
-    contentDiv.appendChild(button);
-} else {
-    console.error('Элемент с классом "content" не найден!');
-}
-
-// 1. Вывод сообщения, когда все теги DOM загружены
+// DOMContentLoaded и load
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Все теги прогрузились');
+    showMessage('Все теги прогрузились');
 });
-
-// 2. Вывод сообщения, когда все ресурсы страницы загружены
 window.addEventListener('load', () => {
-    console.log('Страница загрузилась');
+    showMessage('Страница загрузилась');
 });
 
-// 3. Делегирование: Определение наличия класса "super_element" и вывод тега
+// Делегирование
 document.body.addEventListener('click', (event) => {
     const element = event.target;
     const tagName = element.tagName.toLowerCase();
     if (element.classList.contains('super_element')) {
-        console.log(`Класс "super_element" присутствует в элементе "${tagName}".`);
+        showMessage(`Класс "super_element" присутствует в элементе "${tagName}".`);
     } else {
-        console.log(`Класс "super_element" отсутствует в элементе "${tagName}".`);
+        showMessage(`Класс "super_element" отсутствует в элементе "${tagName}".`);
     }
 });
 
-// 4. Сообщение при наведении на textarea
+// Textarea
 document.addEventListener('mouseover', (event) => {
     if (event.target.tagName.toLowerCase() === 'textarea') {
-        console.log('Вы навели на textarea.');
+        showMessage('Вы навели на textarea.');
     }
 });
 
-// 5. Делегирование: Вывод текста кнопки при клике внутри ul
+// UL клики
 document.querySelector('ul').addEventListener('click', (event) => {
     if (event.target.tagName.toLowerCase() === 'button') {
-        console.log(event.target.textContent);
+        showMessage(event.target.textContent);
     }
 });
 
-// 6. Ответ на вопрос:
-console.log('Когда клик происходит внутри ul, сначала срабатывает обработчик клика на кнопке внутри ul, затем всплытие событий достигает обработчика клика на всем документе, определяющего наличие класса "super_element". Из-за этого сообщение из 5-го задания появляется первым, затем 3-е задание.')
+// Ответ на вопрос
+showMessage('Когда клик происходит внутри ul, сначала срабатывает обработчик клика на кнопке внутри ul, затем всплытие событий достигает обработчика клика на всем документе, определяющего наличие класса "super_element". Из-за этого сообщение из 5-го задания появляется первым, затем 3-е задание.');
 
-// 7. Изменение цвета заднего фона каждого второго li
-document.querySelectorAll('li:nth-child(even)').forEach(li => {
-    li.style.backgroundColor = 'lightgray';
+// Проверка напитков
+document.getElementById('submit-drink').addEventListener('click', () => {
+    const selectedDrink = document.querySelector('input[name="drink"]:checked');
+    
+    if (!selectedDrink) {
+        showMessage('Пожалуйста, выберите напиток');
+        return;
+    }
+    
+    if (selectedDrink.value === 'tea') {
+        showMessage('Чай закончился');
+    } else if (selectedDrink.value === 'coffee') {
+        showMessage('Кофе закончился');
+    }
 });
 // Проверка согласия с условиями
 document.getElementById('submit-agreement').addEventListener('click', function() {
@@ -262,7 +206,7 @@ document.getElementById('submit-agreement').addEventListener('click', function()
     } else {
         errorElement.textContent = '';
         // Здесь можно добавить код для отправки формы
-        console.log('Форма отправлена');
+        showMessage('Форма отправлена');
     }
 });
 
@@ -283,9 +227,9 @@ document.getElementById('submit-drink').addEventListener('click', () => {
     }
     
     if (selectedDrink.value === 'tea') {
-        console.log('Чай закончился');
+        alert('Чай закончился');
     } else if (selectedDrink.value === 'coffee') {
-        console.log('Кофе закончился');
+        alert('Кофе закончился');
     }
 });
 
@@ -357,3 +301,12 @@ inputs.forEach(input => {
         }
     });
 });
+// Функция для вывода сообщений на страницу
+function showMessage(message, type = 'info') {
+    const messagesContainer = document.getElementById('messages-container');
+    const messageElement = document.createElement('div');
+    messageElement.className = 'message-item';
+    messageElement.textContent = message;
+    messagesContainer.appendChild(messageElement);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
