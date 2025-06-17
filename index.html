@@ -50,8 +50,63 @@
 
             <div id="products-list"></div>
         </section>
-    </main>
+        <section id="agreement-section">
+    <form id="agreement-form">
+        <label>
+            <input type="checkbox" id="agree-checkbox">
+            Согласен с условиями
+        </label>
+        <p id="agreement-error" class="error-message"></p>
+        <button type="button" id="submit-agreement">Отправить</button>
+    </form>
+</section>  
+        <section id="drink-selection">
+    <h2>Выберите напиток:</h2>
+    <form id="drink-form">
+        <label>
+            <input type="radio" name="drink" value="tea"> Чай
+        </label>
+        <label>
+            <input type="radio" name="drink" value="coffee"> Кофе
+        </label>
+        <button type="button" id="submit-drink">Отправить</button>
+    </form>
+</section>
+<section id="password-section">
+    <h2>Проверка пароля</h2>
+    <div class="password-container">
+        <input type="password" id="password-input" placeholder="Введите пароль">
+        <button id="check-password">Проверить</button>
+    </div>
+    <p id="password-message"></p>
+</section>
+<section id="dynamic-title-section">
+    <h1 id="dynamic-heading">Заголовок</h1>
+    <input 
+        type="text" 
+        id="title-input" 
+        placeholder="Введите текст для заголовка"
+    >
+</section>
+<section id="dynamic-content">
+    <div class="input-group">
+        <input type="text" id="from" placeholder="Введите текст">
+        <span id="output"></span>
+    </div>
 
+    <div>
+        <button class="messageBtn">Анимировать сообщение</button>
+        <div class="message">Это сообщение появится с анимацией</div>
+    </div>
+
+    <form id="validationForm">
+        <input type="text" name="name" placeholder="Имя" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <button type="submit">Отправить</button>
+    </form>
+</section>
+    </main>
     <footer>
         <p>© 2023 Интернет-магазин компьютерной техники</p>
     </footer>
