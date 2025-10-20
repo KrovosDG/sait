@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Динамическое управление элементами</title>
+    <style>
+        /* Стили для div-элементов */
+        .box {
+            display: inline-block;
+            margin: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            line-height: 100px;
+            color: black;
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Динамическое управление элементами</h1>
+    <button onclick="addBox()">Добавить элемент</button>
+    <button onclick="removeLastBox()">Удалить элемент</button>
+    <button onclick="cloneLastBox()">Клонировать элемент</button>
+
+    <div id="container"></div>
+
+    <script>
+        let counter = 0; // Счётчик для уникальных номеров элементов
+
+        const container = document.querySelector('#container');
+
+        // Функция для добавления нового элемента
+        function addBox() {
+            counter++;
+            const newDiv = document.createElement('div');
+            newDiv.classList.add('box');
+            newDiv.style.width = '100px';
+            newDiv.style.height = '100px';
+            newDiv.textContent = `${counter}`;
+            container.appendChild(newDiv);
+        }
+
+        // Функция для удаления последнего элемента
+        function removeLastBox() {
+            const boxes = Array.from(document.querySelectorAll('.box'));
+            if (boxes.length === 0) return;
+            const lastBox = boxes.pop();
+            container.removeChild(lastBox);
+            counter--; // Уменьшаем счётчик, если удаление успешно
+        }
+
+        // Функция для точного клонирования последнего элемента
+        function cloneLastBox() {
+            const boxes = Array.from(document.querySelectorAll('.box'));
+            if (boxes.length === 0) return;
+            const lastBox = boxes.slice(-1)[0]; // Берём последний элемент массива
+            const clonedBox = lastBox.cloneNode(true); // Глубокий клон узла
+            container.appendChild(clonedBox);
+            // Не увеличиваем счётчик здесь, потому что хотим сохранить исходный номер
+        }
+    </script>
+</body>
+</html>

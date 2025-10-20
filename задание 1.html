@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 1</title>
+</head>
+<body>
+    <h1>Размеры окна браузера:</h1>
+    <p id="size"></p>
+
+    <button onclick="goBack()">Назад</button>
+    <button onclick="goForward()">Вперед</button>
+
+    <script>
+        function updateWindowSize() {
+            const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            const height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            document.getElementById('size').innerHTML = 'Ширина: ' + width + ', Высота: ' + height;
+        }
+
+        window.addEventListener('resize', updateWindowSize);
+
+        updateWindowSize();
+
+        window.onbeforeunload = function(event) {
+            return "Вы действительно хотите покинуть страницу?";
+        };
+
+        function goBack() {
+            if (history.length > 1) {
+                history.back();
+            } else {
+                alert("Нет предыдущих страниц!");
+            }
+        }
+
+        function goForward() {
+            if (history.forward()) {
+                history.forward();
+            } else {
+                alert("Нет последующих страниц!");
+            }
+        }
+    </script>
+</body>
+</html>
